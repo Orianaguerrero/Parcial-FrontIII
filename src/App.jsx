@@ -26,11 +26,13 @@ function App() {
 
     if(card.name.length < 3 && card.name.trim() === "") {
       setError('La información enviada es incorrecta.')
+      setSubmitCard(null)
       return;
     }
 
     if(card.singer.length < 6) {
       setError('El nombre del cantante debe tener más de 6 caracteres.')
+      setSubmitCard(null)
       return;
     }
 
@@ -73,7 +75,7 @@ function App() {
          />
          <button type="submit">Enviar</button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
       {submitCard && (
         <Card data={submitCard}/>
       )}
